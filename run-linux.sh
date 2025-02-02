@@ -55,6 +55,19 @@ for TEST in \
 done
 
 #
+# Execute My_Test examples
+#
+
+for TEST in \
+    build/examples/Muzi_Test/MediumSteps \
+; do
+    "${TEST}" > /dev/null &
+    sleep 1
+    (cd examples/Muzi_Test; cucumber)
+    wait %
+done
+
+#
 # Execute feature showcase on Unix socket
 #
 
