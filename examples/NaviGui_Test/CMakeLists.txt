@@ -1,0 +1,16 @@
+project(NaviGui_Test)
+
+if(TARGET Qt::Widgets)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
+    set(CMAKE_AUTOUIC ON)
+    add_library(NaviGui_Test STATIC src/mywindow.cpp)
+    target_include_directories(NaviGui_Test INTERFACE src)
+    target_link_libraries(NaviGui_Test Qt::Widgets Qt::Core)
+endif()
+
+if(TARGET GTest::gtest)
+    add_executable(NaviGuiSteps features/step_definitions/naviguisteps.cpp)
+    target_link_libraries(NaviGuiSteps PRIVATE NaviGui_Test GTest::gtest cucumber-cpp Qt::Widgets Qt::Core)
+    target_include_directories(NaviGuiSteps INTERFACE src)
+endif()
