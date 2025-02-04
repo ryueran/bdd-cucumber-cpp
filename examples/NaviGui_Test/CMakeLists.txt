@@ -11,6 +11,6 @@ endif()
 
 if(TARGET GTest::gtest)
     add_executable(NaviGuiSteps features/step_definitions/naviguisteps.cpp)
-    target_link_libraries(NaviGuiSteps PRIVATE NaviGui_Test GTest::gtest cucumber-cpp Qt::Widgets Qt::Core)
+    target_link_libraries(NaviGuiSteps PRIVATE NaviGui_Test cucumber-cpp GTest::gtest Qt::Widgets Qt::Core)
     target_include_directories(NaviGuiSteps INTERFACE src)
 endif()
